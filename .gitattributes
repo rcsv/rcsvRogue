@@ -1,0 +1,67 @@
+#
+# .gitATTRIBUTES
+# $Gcid$
+#
+### End-of-line conversion
+# White Git normally leaves files contents alone, it can be configured to
+# normalize line endings to LF in the repository and, optionally, to
+# convert them to CRLF when files are checked out.
+# If you simply want to have CRLF line endings in your working directory
+# regardless of the repository you are working with, you can set the config
+# variable "core.autocrlf" without using any attributes.
+# ```toml
+# [core]
+#   autoconf = true
+# ```
+# This does not force normalization of text files, but does ensure that
+# text files that you introduce to the repository have their line endings
+# normalized to LF when they are added, and that files that are already
+# normalized in the repository stay normalized.
+# If you want to ensure that text files that any contributor introduces to
+# the repository have their line endings normalized, you can set the `text`
+# attribute to "auto" for *all* files.
+
+*       text=auto
+
+# The attributes allow a fine-grained control, how the line endings are
+# converted. Here is an example that will make Git normalize .txt, .vcproj,
+# and .sh files, ensure that .vcproj files have CRLF and .sh files have LF
+# in the working directory, and prevent .jpg files from being normalized
+# regardless of their content.
+
+*.txt   text      filter=embed-commitId
+*.rs    text      filter=embed-commitId
+*.toml  text=auto filter=embed-commitId
+
+# Binary files
+# ------------------------------------------------------------------------
+
+### Images
+*.jpg   binary
+*.png   binary
+*.gif   binary
+
+### web fonts
+*.otf   binary
+*.eot   binary
+*.svg   binary
+*.ttf   binary
+*.woff  binary
+
+# **Note** When `text=auto` conversion is enabled in a cross-platform project
+# using push and pull to a central repository the text files containing CRLFs
+# should be normalized.
+# From a clean working directory:
+# ```sh
+# $ echo "* text=auto" >.gitattributes
+# $ git add --renormalize .
+# $ git status        # Show files that will be normalized
+# $ git commit -m "Introduce end-of-line normalization"
+# ```
+# If any files that should not be normalized show up in *git status*, unset
+# their `text` attribute before running *git add -u*.
+
+*.pdf   binary
+
+# Conversely, text files that Git does not detect can have normalization
+# enabled manually.
