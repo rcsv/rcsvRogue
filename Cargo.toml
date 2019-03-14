@@ -85,7 +85,7 @@ path = "src/main.rs"
 
 
 [dependencies]
-#ggez = "0.5.0-rc.1"
+ggez = "0.5.0-rc.1"
 #skeptic = "0.13"
 
 [profile.dev]
