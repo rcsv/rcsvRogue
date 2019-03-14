@@ -1,4 +1,5 @@
 [package]
+# $Gcid$
 name = "rcsvRogue" # snake_case is the best.
 description = "A lightweight and simple RPG (ROGUE-LIKE) running with ggez, minimal framework of Rust-lang."
 keywords    = ["example", "game", "rust-lang", "ggez"]
