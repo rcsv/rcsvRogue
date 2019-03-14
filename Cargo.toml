@@ -73,6 +73,7 @@ license = "MIT"
 
 
 [lib]
+<<<<<<< HEAD
 name = "rcsvRogue"
 path = "src/lib.rs"
 
@@ -87,7 +88,6 @@ path = "src/main.rs"
 #ggez = "0.5.0-rc.1"
 #skeptic = "0.13"
 
-
 [profile.dev]
 opt-level = 0
 debug = true
@@ -101,4 +101,3 @@ debug = false
 rpath = false
 lto = false
 debug-assertions = false
-
