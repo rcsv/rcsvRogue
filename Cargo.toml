@@ -1,7 +1,104 @@
 [package]
+name = "rcsvRogue" # snake_case is the best.
+description = "A lightweight and simple RPG (ROGUE-LIKE) running with ggez, minimal framework of Rust-lang."
+keywords    = ["example", "game", "rust-lang", "ggez"]
+version = "0.0.1"
+
+# These URLs point to more information about the package. These are intended
+# to be webviews of the relevant data, not necessarily compatible with VCS
+# tools and the like.
+documentation = "https://github.com/rcsv/rcsvRogue"
+homepage      = "https://github.com/rcsv/rcsvRogue"
+repository    = "https://github.com/rcsv/rcsvRogue"
+
+authors = [
+    "rcsv <rcsvpg@gmail.com>",
+]
+
+edition = "2018"
+readme = "README.md"
+categories = ["game", "2D"]
+build = "src/build.rs"
+
+license = "MIT"
+
+# Optional specification of badges to be displayed on crates.io.
+# - The badges pertaining to build status that are current available are
+#   Appveyor, CircleCI, GitLab, and TravisCI.
+# - Available badges pertaining to code test coverage are Codecov and
+#   Coveralls.
+# - There are also maintenance-related badges based on isitmaintained.com
+#   which state the issue resolution time, percent of open issues, and future
+#   maintenance intentions.
+# If a `repository` key is required, this refers to a repository in
+# `user/repo` format.
+[badges]
+
+# Appveyor: `repository` is required. `branch` is optional; default is `master`
+# `service` is optional; valid values are `github` (default), `bitbucket`, and
+# `gitlab`; `id` is optional; you can specify the appveyor project id if you
+# want to use that instead. `project_name` is optional; use when the repository
+# name differs from the appveyor project name.
+# appveyor = { repository = "...", branch = "master", service = "github" }
+
+# Circle CI: `repository` is required. `branch` is optional; default is `master`
+# circle-ci = { repository = "...", branch = "master" }
+
+# GitLab: `repository` is required. `branch` is optional; default is `master`
+# gitlab = { repository = "...", branch = "master" }
+
+# Travis CI: `repository` in format "<user>/<project>" is required.
+# `branch` is optional; default is `master`
+# travis-ci = { repository = "...", branch = "master" }
+
+# Codecov: `repository` is required. `branch` is optional; default is `master`
+# `service` is optional; valid values are `github` (default), `bitbucket`, and
+# `gitlab`.
+# codecov = { repository = "...", branch = "master", service = "github" }
+
+# Coveralls: `repository` is required. `branch` is optional; default is `master`
+# `service` is optional; valid values are `github` (default) and `bitbucket`.
+# coveralls = { repository = "...", branch = "master", service = "github" }
+
+# Is it maintained resolution time: `repository` is required.
+# is-it-maintained-issue-resolution = { repository = "..." }
+
+# Is it maintained percentage of open issues: `repository` is required.
+# is-it-maintained-open-issues = { repository = "..." }
+
+# Maintenance: `status` is required. Available options are `actively-developed`,
+# `passively-maintained`, `as-is`, `experimental`, `looking-for-maintainer`,
+# `deprecated`, and the default `none`, which displays no badge on crates.io.
+# maintenance = { status = "..." }
+
+
+[lib]
 name = "rcsvRogue"
-version = "0.1.0"
-authors = ["rcsv <rcsvpg@gmail.com>"]
+path = "src/lib.rs"
+
+[[bin]]
+name = "rcsvRogue"
+path = "src/main.rs"
+
+[features]
+
 
 [dependencies]
-ggez = "0.5.0-rc.0"
+#ggez = "0.5.0-rc.1"
+#skeptic = "0.13"
+
+
+[profile.dev]
+opt-level = 0
+debug = true
+rpath = false
+lto = false
+debug-assertions = true
+
+[profile.release]
+opt-level = 3
+debug = false
+rpath = false
+lto = false
+debug-assertions = false
+
