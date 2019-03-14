@@ -74,11 +74,11 @@ license = "MIT"
 
 
 [lib]
-name = "rcsvRogue"
+name = "rcsv_rogue"
 path = "src/lib.rs"
 
 [[bin]]
-name = "rcsvRogue"
+name = "rcsv_rogue"
 path = "src/main.rs"
 
 [features]
