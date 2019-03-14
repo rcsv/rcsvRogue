@@ -86,18 +86,14 @@ path = "src/main.rs"
 
 [dependencies]
 ggez = "0.5.0-rc.1"
-#skeptic = "0.13"
 
-[profile.dev]
-opt-level = 0
-debug = true
-rpath = false
-lto = false
-debug-assertions = true
+[dev-dependencies]
+chrono = "0.4"
+fern = "0.5"
+rand = "0.6"
+structopt = "0.2"
+cgmath = { version = "0.17", features = ["mint"]}
+skeptic = "0.13"
 
-[profile.release]
-opt-level = 3
-debug = false
-rpath = false
-lto = false
-debug-assertions = false
+[build-dependencies]
+skeptic = "0.13"
