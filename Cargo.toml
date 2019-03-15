@@ -50,7 +50,7 @@ license = "MIT"
 
 # Travis CI: `repository` in format "<user>/<project>" is required.
 # `branch` is optional; default is `master`
-# travis-ci = { repository = "...", branch = "master" }
+travis-ci = { repository = "rcsv/rcsvRogue", branch = "master" }
 
 # Codecov: `repository` is required. `branch` is optional; default is `master`
 # `service` is optional; valid values are `github` (default), `bitbucket`, and
