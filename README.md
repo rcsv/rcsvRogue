@@ -1,7 +1,6 @@
 # rcsvRogue
 [![Build Status](https://travis-ci.com/rcsv/rcsvRogue.svg?branch=master)](https://travis-ci.com/rcsv/rcsvRogue)
 [![license](https://img.shields.io/badge/license-MIT-blue.svg)](https://github.com/ggez/ggez/blob/master/LICENSE)
-[![Build Status](https://travis-ci.com/rcsv/rcsvRogue.svg?branch=master)](https://travis-ci.com/rcsv/rcsvRogue)
 
 > **WARNING**: The current released version, 0.1.0 is **NOT DONE**. It is
 > basically a PRE-RELEASE. It will get fixed up pretty rapidly, and you are
