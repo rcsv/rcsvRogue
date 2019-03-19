@@ -85,15 +85,4 @@ path = "src/main.rs"
 
 
 [dependencies]
-ggez = "0.5.0-rc.1"
-
-[dev-dependencies]
-chrono = "0.4"
-fern = "0.5"
-rand = "0.6"
-structopt = "0.2"
-cgmath = { version = "0.17", features = ["mint"]}
-skeptic = "0.13"
-
-[build-dependencies]
-skeptic = "0.13"
+dwarf-term = "0.1"
