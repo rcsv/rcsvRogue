@@ -19,10 +19,10 @@ TOML aims to be a minimal configuration file format that's easy to read due to o
 - [Integer](#user-content-integer)
 - [Float](#user-content-float)
 - [Boolean](#user-content-boolean)
-- [Offset Date-Time](#user-content-offset-date-time]
-- [Local Date-Time](#user-content-local-date-time]
-- [Local Date](#user-content-local-date]
-- [Local Time](#user-content-locla-time]
+- [Offset Date-Time](#user-content-offset-date-time)
+- [Local Date-Time](#user-content-local-date-time)
+- [Local Date](#user-content-local-date)
+- [Local Time](#user-content-locla-time)
 - [Array](#user-content-array)
 - [Table](#user-content-table)
 - [Inline Table](#user-content-inline-table)
