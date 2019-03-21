@@ -13,10 +13,11 @@ TOML aims to be a minimal configuration file format that's easy to read due to o
 - [Example](#user-content-example)
 - [Spec](#user-content-spec)
 ## Example
+
 ```toml
 # This is a TOML document.
 
-title = "TOML Example
+title = "TOML Example"
 
 [owner]
 name = "Tom Preston-Werner"
@@ -90,6 +91,7 @@ key = "value"
 bare_key = "value"
 bare-key = "value"
 1234 = "value"
+```
 
 **Quoted keys** follow the exact same rules as either basic strings or literal strings and allow you to use a much broader set of key names. Best practice is to use bare keys ecept when absolutely necessary.
 
@@ -100,6 +102,7 @@ bare-key = "value"
 'key2' = "value"
 'quoted "value"' = "value"
 ```
+
 A bare key must be non-empty, but an empty quoted key is allowed (though discouraged).
 
 ```toml
