@@ -12,6 +12,27 @@ TOML aims to be a minimal configuration file format that's easy to read due to o
 ## Table fo contents
 - [Example](#user-content-example)
 - [Spec](#user-content-spec)
+- [Comment](#user-content-comment)
+- [Key/Value Pair](#user-content-keyvalue-pair)
+- [Keys](#user-content-keys)
+- [String](#user-content-string)
+- [Integer](#user-content-integer)
+- [Float](#user-content-float)
+- [Boolean](#user-content-boolean)
+- [Offset Date-Time](#user-content-offset-date-time]
+- [Local Date-Time](#user-content-local-date-time]
+- [Local Date](#user-content-local-date]
+- [Local Time](#user-content-locla-time]
+- [Array](#user-content-array)
+- [Table](#user-content-table)
+- [Inline Table](#user-content-inline-table)
+- [Array of Tables](#user-content-array-of-tables)
+- [Filename Extension](#user-content-filename-extension)
+- [MIME Type](#user-content-mime-type)
+- [Comparison with Other Formats](#user-content-comparison-with-other-formats)
+- [Get Involved](#user-content-get-involved)
+- [Wiki](#user-content-wiki)
+
 ## Example
 
 ```toml
@@ -114,7 +135,7 @@ A bare key must be non-empty, but an empty quoted key is allowed (though discour
 ***Dotted keys** are a sequence of bare or quoted key joined with a dot. This allows for grouping similar properties together:
 
 ```toml
-name "Orange"
+name = "Orange"
 physical.color = "orange"
 phisical.shape = "round"
 site."google.com" = true
@@ -185,9 +206,7 @@ Any Unicode character may be escaped with the `¥uXXXX` or `¥UXXXXXXXX` form. T
 
 All other escape sequence not listed above are reserved and, if used, TOML should produce an error. Sometimes you need to expres passages of text (e.g. translation files) or would like to break up a very long string into multiple lines. TOML makes this easy.
 
-**Multi-line basic strings** are surrounded by three quotation marks on each
-side and allow newlines. A newline immediately following the opening delimiter
-will be trimmed. All other whitespace and newline characters remain intact.
+**Multi-line basic strings** are surrounded by three quotation marks on each side and allow newlines. A newline immediately following the opening delimiter will be trimmed. All other whitespace and newline characters remain intact.
 
 ```toml
 str1 = """
@@ -195,8 +214,7 @@ Roses are red
 Violets are blue"""
 ```
 
-TOML parsers should feel free to normalize newline to whatever makes sense for
-their platform.
+TOML parsers should feel free to normalize newline to whatever makes sense for their platform.
 
 ```toml
 # On a Unix system, the above multi-line string will most likely be the same as:
@@ -206,11 +224,7 @@ str2 = "Roses are red\nViolets are blue"
 str3 = "Roses are red\r\nViolets are blue"
 ```
 
-For writing long strings without introducing extraneous whitespace, use a "line
-ending backslash". When the last non-whitespace character on a line is a `\`, it
-will be trimmed along with all whitespace (including newlines) up to the next
-non-whitespace character or closing delimiter. All of the escape sequences that
-are valid for basic strings are also valid for multi-line basic strings.
+For writing long strings without introducing extraneous whitespace, use a "line ending backslash". When the last non-whitespace character on a line is a `\`, it will be trimmed along with all whitespace (including newlines) up to the next non-whitespace character or closing delimiter. All of the escape sequences that are valid for basic strings are also valid for multi-line basic strings.
 
 ```toml
 # The following strings are byte-for-byte equivalent:
@@ -230,16 +244,11 @@ str3 = """\
        """
 ```
 
-Any Unicode character may be used except those that must be escaped: backslash
-and the control characters (U+0000 to U+001F, U+007F). Quotation marks need not
-be escaped unless their presence would create a premature closing delimiter.
+Any Unicode character may be used except those that must be escaped: backslash and the control characters (U+0000 to U+001F, U+007F). Quotation marks need not be escaped unless their presence would create a premature closing delimiter.
 
-If you're a frequent specifier of Windows paths or regular expressions, then
-having to escape backslashes quickly becomes tedious and error prone. To help,
-TOML supports literal strings which do not allow escaping at all.
+If you're a frequent specifier of Windows paths or regular expressions, then having to escape backslashes quickly becomes tedious and error prone. To help, TOML supports literal strings which do not allow escaping at all.
 
-**Literal strings** are surrounded by single quotes. Like basic strings, they
-must appear on a single line:
+**Literal strings** are surrounded by single quotes. Like basic strings, they must appear on a single line:
 
 ```toml
 # What you see is what you get.
@@ -249,14 +258,9 @@ quoted   = 'Tom "Dubs" Preston-Werner'
 regex    = '<\i\c*\s*>'
 ```
 
-Since there is no escaping, there is no way to write a single quote inside a
-literal string enclosed by single quotes. Luckily, TOML supports a multi-line
-version of literal strings that solves this problem.
+Since there is no escaping, there is no way to write a single quote inside a literal string enclosed by single quotes. Luckily, TOML supports a multi-line version of literal strings that solves this problem.
 
-**Multi-line literal strings** are surrounded by three single quotes on each
-side and allow newlines. Like literal strings, there is no escaping whatsoever.
-A newline immediately following the opening delimiter will be trimmed. All
-other content between the delimiters is interpreted as-is without modification.
+**Multi-line literal strings** are surrounded by three single quotes on each side and allow newlines. Like literal strings, there is no escaping whatsoever. A newline immediately following the opening delimiter will be trimmed. All other content between the delimiters is interpreted as-is without modification.
 
 ```toml
 regex2 = '''I [dw]on't need \d{2} apples'''
@@ -268,8 +272,44 @@ trimmed in raw strings.
 '''
 ```
 
-Control characters other than tab are not permitted in a literal string. Thus,
-for binary data it is recommended that you use Base64 or another suitable ASCII
-or UTF-8 encoding. The handling of that encoding will be application specific.
+Control characters other than tab are not permitted in a literal string. Thus, for binary data it is recommended that you use Base64 or another suitable ASCII or UTF-8 encoding. The handling of that encoding will be application specific.
 
+## Integer
+
+Integers are whole numbers. Positive numbers may be prefixed with a plus sign. Negative numbers are prefixed with a minus sign.
+
+```toml
+int1 = +99
+int2 = 42
+int3 = 0
+int4 = -17
+```
+
+For large numbers, you may use underscore between digits to enhance readability. Each underscore must be surrounded by at least one digit on each side.
+
+```toml
+int5 = 1_000
+int6 = 5_349_221
+int7 = 1_2_3_4_5 # VALID but discouraged
+```
+
+Leading zeros are not allowed. Integer values `-0` and `+0` are valid and identical to an unprefixed zero.
+
+Non-negative integer values may also be expressed in hexadecimal, octal, or binary. In these formats, leading zeros are allowed (after the prefix). Hex values are case insensitive. Underscores are allowed between digits (but not between the prefix and the value).
+
+```toml
+# hexadecimal with prefix `0x`
+hex1 = 0xDEADBEEF
+hex2 = 0xdeadbeef
+hex3 = 0xdead_beef
+
+# octal with prefix `0o`
+oct1 = 0o01234567
+oct2 = 0o755 # useful for Unix file permissions
+
+# binary with prefix `0b`
+bin1 = 0b11010110
+```
+
+64 bit (signed long) range expected (−9,223,372,036,854,775,808 to 9,223,372,036,854,775,807).
 
